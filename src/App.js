@@ -1,24 +1,30 @@
-import React from 'react';
-import logo from './logo.svg';
+import React, { useState } from 'react';
+import { Form, Button, Modal } from 'react-bootstrap'
+import Add from './Add'
+import Edit from './Edit'
 import './App.css';
 
 function App() {
+  const [addModal, setAddModal] = useState(false);
+  const [editModal, setEditModal] = useState(false);
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <Button onClick={() => { setAddModal(!addModal) }}>
+        Add
+      </Button>
+      <Button onClick={() => { setEditModal(!editModal) }}>
+        Edit
+      </Button>
+      <Add
+        show={addModal}
+        showFunc={setAddModal}
+      >
+      </Add>
+      <Edit
+        show={editModal}
+        showFunc={setEditModal}
+      >
+      </Edit>
     </div>
   );
 }
